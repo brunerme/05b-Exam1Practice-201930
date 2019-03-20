@@ -104,7 +104,7 @@ def run_test_problem3a():
 
     #Test 5
     point = rg.Point(40, 40)
-    expected = 3
+    expected = 4
     answer = problem3a(window4, point, 2)
     print()
     print('Test 5 expected:', expected)
@@ -168,7 +168,7 @@ def problem3a(window, point, n):
             line.thickness = 13
         total = total+line.thickness
         line.attach_to(window)
-        window.render(0.5)
+        window.render()
     return total
 
 
@@ -240,7 +240,28 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # -------------------------------------------------------------------------
-
+    window=rg.RoseWindow(400, 650)
+    thickness=0
+    for k in range (m):
+        if m >= 1:
+            x = problem3a(window, point1, 3)
+            if m==1:
+                thickness=thickness+x
+        if m >= 2:
+            x = problem3a(window, rg.Point(point1.x, point1.y+60), 5)
+            if m==2:
+                thickness = thickness+x
+        if m >= 3:
+            x = problem3a(window, rg.Point(point1.x, point1.y+120), 7)
+            if m==3:
+                thickness = thickness+x
+        if m>=4:
+            x = problem3a(window, rg.Point(point1.x, point1.y+180), 9)
+            if m==4:
+                thickness = thickness+x
+    return thickness
+    window.render()
+    window.close_on_mouse_click()
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
